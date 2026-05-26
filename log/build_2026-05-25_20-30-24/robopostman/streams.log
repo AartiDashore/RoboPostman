@@ -1,0 +1,22 @@
+[0.533s] Invoking command in '/home/adashore/ros2_ws/build/robopostman': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/adashore/ros2_ws/build/robopostman/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/adashore/ros2_ws/install/robopostman/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/adashore/ros2_ws/build/robopostman/build --no-deps symlink_data
+[0.749s] running develop
+[0.877s] running egg_info
+[0.890s] writing robopostman.egg-info/PKG-INFO
+[0.890s] writing dependency_links to robopostman.egg-info/dependency_links.txt
+[0.890s] writing entry points to robopostman.egg-info/entry_points.txt
+[0.890s] writing requirements to robopostman.egg-info/requires.txt
+[0.890s] writing top-level names to robopostman.egg-info/top_level.txt
+[0.915s] reading manifest file 'robopostman.egg-info/SOURCES.txt'
+[0.916s] writing manifest file 'robopostman.egg-info/SOURCES.txt'
+[0.929s] running build_ext
+[0.929s] Creating /home/adashore/ros2_ws/install/robopostman/lib/python3.12/site-packages/robopostman.egg-link (link to .)
+[0.929s] Installing camera_detector script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+[0.929s] Installing keyboard_teleop script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+[0.929s] Installing mission_manager script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+[0.929s] Installing mode_switch_gui script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+[0.929s] Installing obstacle_spawner script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+[0.930s] Installing scoring_trail script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+[0.930s] 
+[0.930s] Installed /home/adashore/ros2_ws/build/robopostman
+[0.930s] running symlink_data
+[0.950s] Invoked command in '/home/adashore/ros2_ws/build/robopostman' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/adashore/ros2_ws/build/robopostman/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/adashore/ros2_ws/install/robopostman/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/adashore/ros2_ws/build/robopostman/build --no-deps symlink_data

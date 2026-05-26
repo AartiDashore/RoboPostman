@@ -1,0 +1,7 @@
+[console_scripts]
+camera_detector = robopostman.camera_detector:main
+keyboard_teleop = robopostman.keyboard_teleop:main
+mission_manager = robopostman.mission_manager:main
+mode_switch_gui = robopostman.mode_switch_gui:main
+obstacle_spawner = robopostman.obstacle_spawner:main
+scoring_trail = robopostman.scoring_trail:main

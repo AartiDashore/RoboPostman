@@ -1,0 +1,40 @@
+running develop
+running egg_info
+creating robopostman.egg-info
+writing robopostman.egg-info/PKG-INFO
+writing dependency_links to robopostman.egg-info/dependency_links.txt
+writing entry points to robopostman.egg-info/entry_points.txt
+writing requirements to robopostman.egg-info/requires.txt
+writing top-level names to robopostman.egg-info/top_level.txt
+writing manifest file 'robopostman.egg-info/SOURCES.txt'
+reading manifest file 'robopostman.egg-info/SOURCES.txt'
+writing manifest file 'robopostman.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/adashore/ros2_ws/install/robopostman/lib/python3.12/site-packages/robopostman.egg-link (link to .)
+Installing camera_detector script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+Installing keyboard_teleop script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+Installing mission_manager script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+Installing mode_switch_gui script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+Installing obstacle_spawner script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+Installing scoring_trail script to /home/adashore/ros2_ws/install/robopostman/lib/robopostman
+
+Installed /home/adashore/ros2_ws/build/robopostman
+running symlink_data
+creating /home/adashore/ros2_ws/install/robopostman/share/ament_index
+creating /home/adashore/ros2_ws/install/robopostman/share/ament_index/resource_index
+creating /home/adashore/ros2_ws/install/robopostman/share/ament_index/resource_index/packages
+symbolically linking /home/adashore/ros2_ws/build/robopostman/resource/robopostman -> /home/adashore/ros2_ws/install/robopostman/share/ament_index/resource_index/packages
+symbolically linking /home/adashore/ros2_ws/build/robopostman/package.xml -> /home/adashore/ros2_ws/install/robopostman/share/robopostman
+creating /home/adashore/ros2_ws/install/robopostman/share/robopostman/launch
+symbolically linking /home/adashore/ros2_ws/build/robopostman/launch/slam_only.launch.py -> /home/adashore/ros2_ws/install/robopostman/share/robopostman/launch
+symbolically linking /home/adashore/ros2_ws/build/robopostman/launch/robopostman.launch.py -> /home/adashore/ros2_ws/install/robopostman/share/robopostman/launch
+creating /home/adashore/ros2_ws/install/robopostman/share/robopostman/worlds
+symbolically linking /home/adashore/ros2_ws/build/robopostman/worlds/neighborhood.sdf -> /home/adashore/ros2_ws/install/robopostman/share/robopostman/worlds
+creating /home/adashore/ros2_ws/install/robopostman/share/robopostman/urdf
+symbolically linking /home/adashore/ros2_ws/build/robopostman/urdf/robopostman.urdf -> /home/adashore/ros2_ws/install/robopostman/share/robopostman/urdf
+creating /home/adashore/ros2_ws/install/robopostman/share/robopostman/config
+symbolically linking /home/adashore/ros2_ws/build/robopostman/config/slam_toolbox_params.yaml -> /home/adashore/ros2_ws/install/robopostman/share/robopostman/config
+symbolically linking /home/adashore/ros2_ws/build/robopostman/config/waypoints.yaml -> /home/adashore/ros2_ws/install/robopostman/share/robopostman/config
+symbolically linking /home/adashore/ros2_ws/build/robopostman/config/nav2_params.yaml -> /home/adashore/ros2_ws/install/robopostman/share/robopostman/config
+creating /home/adashore/ros2_ws/install/robopostman/share/robopostman/rviz
+symbolically linking /home/adashore/ros2_ws/build/robopostman/rviz/robopostman.rviz -> /home/adashore/ros2_ws/install/robopostman/share/robopostman/rviz
