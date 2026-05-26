@@ -1,1 +1,0 @@
-/home/adashore/ros2_ws/src/robopostman/launch/robopostman.launch.py
