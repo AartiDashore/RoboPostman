@@ -50,10 +50,10 @@ def generate_launch_description():
             '/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist',
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
-            '/world/neighborhood/model/robopostman/link/camera_link/sensor/camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
+            '/world/neighborhood/model/robopostman/link/base_footprint/sensor/camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
         ],
         remappings=[
-            ('/world/neighborhood/model/robopostman/link/camera_link/sensor/camera/image',
+            ('/world/neighborhood/model/robopostman/link/base_footprint/sensor/camera/image',
              '/camera/image_raw'),
         ],
         output='screen',
