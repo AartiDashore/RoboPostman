@@ -5,23 +5,23 @@
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1.0</real_time_factor>
     </physics>
-    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
-    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-physics-system"        name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system"  name="gz::sim::systems::UserCommands"/>
     <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
-    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+    <plugin filename="gz-sim-sensors-system"        name="gz::sim::systems::Sensors">
       <render_engine>ogre2</render_engine>
     </plugin>
 
+    <!-- ── Lighting ──────────────────────────────────────────────── -->
     <light type="directional" name="sun">
       <cast_shadows>true</cast_shadows>
       <pose>0 0 20 0 0 0</pose>
       <diffuse>0.9 0.85 0.75 1</diffuse>
       <specular>0.3 0.3 0.3 1</specular>
-      <attenuation><range>1000</range><constant>0.9</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+      <attenuation><range>1000</range><constant>0.9</constant>
+        <linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
       <direction>-0.4 0.2 -0.9</direction>
     </light>
-
-    <!-- Ambient fill light -->
     <light type="directional" name="ambient_fill">
       <cast_shadows>false</cast_shadows>
       <pose>0 0 10 0 0 0</pose>
@@ -30,10 +30,12 @@
       <direction>0.5 -0.3 -0.8</direction>
     </light>
 
-    <!-- GROUND - grass -->
+    <!-- ── Ground ────────────────────────────────────────────────── -->
     <model name="ground_plane"><static>true</static>
       <link name="link">
-        <collision name="c"><geometry><plane><normal>0 0 1</normal><size>200 200</size></plane></geometry></collision>
+        <collision name="c">
+          <geometry><plane><normal>0 0 1</normal><size>200 200</size></plane></geometry>
+        </collision>
         <visual name="v">
           <geometry><plane><normal>0 0 1</normal><size>200 200</size></plane></geometry>
           <material><ambient>0.3 0.48 0.18 1</ambient><diffuse>0.3 0.48 0.18 1</diffuse></material>
@@ -41,81 +43,198 @@
       </link>
     </model>
 
-    <!-- ROAD NETWORK - cross shape -->
+    <!-- ── Roads ─────────────────────────────────────────────────── -->
     <model name="road_h"><static>true</static><pose>0 0 0.005 0 0 0</pose>
       <link name="link">
-        <visual name="v"><geometry><box><size>50 7 0.01</size></box></geometry>
+        <visual name="v"><geometry><box><size>60 7 0.01</size></box></geometry>
           <material><ambient>0.18 0.18 0.18 1</ambient><diffuse>0.18 0.18 0.18 1</diffuse></material></visual>
-        <collision name="c"><geometry><box><size>50 7 0.01</size></box></geometry></collision>
+        <collision name="c"><geometry><box><size>60 7 0.01</size></box></geometry></collision>
       </link>
     </model>
     <model name="road_v"><static>true</static><pose>0 0 0.005 0 0 0</pose>
       <link name="link">
-        <visual name="v"><geometry><box><size>7 50 0.01</size></box></geometry>
+        <visual name="v"><geometry><box><size>7 60 0.01</size></box></geometry>
           <material><ambient>0.18 0.18 0.18 1</ambient><diffuse>0.18 0.18 0.18 1</diffuse></material></visual>
-        <collision name="c"><geometry><box><size>7 50 0.01</size></box></geometry></collision>
+        <collision name="c"><geometry><box><size>7 60 0.01</size></box></geometry></collision>
       </link>
     </model>
-
-    <!-- Road markings - centre lines -->
     <model name="line_h"><static>true</static><pose>0 0 0.012 0 0 0</pose>
       <link name="link">
-        <visual name="v"><geometry><box><size>50 0.15 0.005</size></box></geometry>
+        <visual name="v"><geometry><box><size>60 0.15 0.005</size></box></geometry>
           <material><ambient>0.9 0.85 0.0 1</ambient><diffuse>0.9 0.85 0.0 1</diffuse></material></visual>
       </link>
     </model>
     <model name="line_v"><static>true</static><pose>0 0 0.012 0 0 0</pose>
       <link name="link">
-        <visual name="v"><geometry><box><size>0.15 50 0.005</size></box></geometry>
+        <visual name="v"><geometry><box><size>0.15 60 0.005</size></box></geometry>
           <material><ambient>0.9 0.85 0.0 1</ambient><diffuse>0.9 0.85 0.0 1</diffuse></material></visual>
       </link>
     </model>
 
-    <!-- Sidewalks -->
+    <!-- ── Sidewalks ─────────────────────────────────────────────── -->
     <model name="sidewalk_hn"><static>true</static><pose>0 4.0 0.006 0 0 0</pose>
       <link name="link">
-        <visual name="v"><geometry><box><size>50 1.2 0.01</size></box></geometry>
+        <visual name="v"><geometry><box><size>60 1.2 0.01</size></box></geometry>
           <material><ambient>0.7 0.68 0.62 1</ambient><diffuse>0.7 0.68 0.62 1</diffuse></material></visual>
-        <collision name="c"><geometry><box><size>50 1.2 0.01</size></box></geometry></collision>
+        <collision name="c"><geometry><box><size>60 1.2 0.01</size></box></geometry></collision>
       </link>
     </model>
     <model name="sidewalk_hs"><static>true</static><pose>0 -4.0 0.006 0 0 0</pose>
       <link name="link">
-        <visual name="v"><geometry><box><size>50 1.2 0.01</size></box></geometry>
+        <visual name="v"><geometry><box><size>60 1.2 0.01</size></box></geometry>
           <material><ambient>0.7 0.68 0.62 1</ambient><diffuse>0.7 0.68 0.62 1</diffuse></material></visual>
-        <collision name="c"><geometry><box><size>50 1.2 0.01</size></box></geometry></collision>
+        <collision name="c"><geometry><box><size>60 1.2 0.01</size></box></geometry></collision>
       </link>
     </model>
     <model name="sidewalk_ve"><static>true</static><pose>4.0 0 0.006 0 0 0</pose>
       <link name="link">
-        <visual name="v"><geometry><box><size>1.2 50 0.01</size></box></geometry>
+        <visual name="v"><geometry><box><size>1.2 60 0.01</size></box></geometry>
           <material><ambient>0.7 0.68 0.62 1</ambient><diffuse>0.7 0.68 0.62 1</diffuse></material></visual>
-        <collision name="c"><geometry><box><size>1.2 50 0.01</size></box></geometry></collision>
+        <collision name="c"><geometry><box><size>1.2 60 0.01</size></box></geometry></collision>
       </link>
     </model>
     <model name="sidewalk_vw"><static>true</static><pose>-4.0 0 0.006 0 0 0</pose>
       <link name="link">
-        <visual name="v"><geometry><box><size>1.2 50 0.01</size></box></geometry>
+        <visual name="v"><geometry><box><size>1.2 60 0.01</size></box></geometry>
           <material><ambient>0.7 0.68 0.62 1</ambient><diffuse>0.7 0.68 0.62 1</diffuse></material></visual>
-        <collision name="c"><geometry><box><size>1.2 50 0.01</size></box></geometry></collision>
+        <collision name="c"><geometry><box><size>1.2 60 0.01</size></box></geometry></collision>
       </link>
     </model>
 
-    <!-- DEPOT / Post Office -->
-    <model name="depot"><static>true</static><pose>0.5 -1.5 0 0 0 0</pose>
+    <!-- ── Depot / Post Office ───────────────────────────────────── -->
+    <model name="depot"><static>true</static>
+      <pose>0.5 -1.5 0 0 0 0</pose>
+
+      <!-- Main depot building -->
       <link name="base">
-        <visual name="v"><geometry><box><size>2.5 2.0 1.5</size></box></geometry>
-          <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
-        <collision name="c"><geometry><box><size>2.5 2.0 1.5</size></box></geometry></collision>
         <pose>0 0 0.75 0 0 0</pose>
+
+        <visual name="v">
+          <geometry>
+            <box>
+              <size>2.5 2.0 1.5</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.9 0.9 0.9 1</ambient>
+            <diffuse>0.9 0.9 0.9 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- REMOVED collision so robot can enter pickup zone -->
       </link>
-      <link name="sign"><pose>0 -1.1 1.2 0 0 0</pose>
-        <visual name="v"><geometry><box><size>1.8 0.1 0.5</size></box></geometry>
-          <material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.1 0.3 0.8 1</diffuse></material></visual>
+
+      <!-- Depot sign -->
+      <link name="sign">
+        <pose>0 -1.1 1.2 0 0 0</pose>
+
+        <visual name="v">
+          <geometry>
+            <box>
+              <size>1.8 0.1 0.5</size>
+            </box>
+          </geometry>
+   
+          <material>
+            <ambient>0.1 0.3 0.8 1</ambient>
+            <diffuse>0.1 0.3 0.8 1</diffuse>
+          </material>
+        </visual>
       </link>
     </model>
 
-    <!-- RED HOUSE -->
+    <!-- ── Parcel pickup marker at depot (ONE, correct position) ─── -->
+    <model name="parcel_marker"><static>true</static>
+
+     <!-- moved OUTSIDE depot so it is visible -->
+     <pose>2.2 -1.5 0 0 0 0</pose>
+
+     <!-- Pole -->
+     <link name="post">
+       <pose>0 0 1.5 0 0 0</pose>
+
+        <visual name="v">
+      <geometry>
+        <cylinder>
+          <radius>0.06</radius>
+          <length>3.0</length>
+        </cylinder>
+      </geometry>
+
+      <material>
+        <ambient>0.9 0.5 0.0 1</ambient>
+        <diffuse>0.9 0.5 0.0 1</diffuse>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Flag -->
+  <link name="flag">
+    <pose>0.3 0 2.8 0 0 0</pose>
+
+    <visual name="v">
+      <geometry>
+        <box>
+          <size>0.6 0.05 0.4</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.9 0.5 0.0 1</ambient>
+        <diffuse>0.9 0.5 0.0 1</diffuse>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Visible parcel -->
+  <link name="parcel_box">
+    <pose>0 0.8 0.25 0 0 0</pose>
+
+    <visual name="v">
+      <geometry>
+        <box>
+          <size>0.45 0.45 0.45</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.6 0.4 0.1 1</ambient>
+        <diffuse>0.6 0.4 0.1 1</diffuse>
+      </material>
+    </visual>
+
+    <collision name="c">
+      <geometry>
+        <box>
+          <size>0.45 0.45 0.45</size>
+        </box>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Bright pickup pad -->
+  <link name="pickup_pad">
+    <pose>0 0 0.01 0 0 0</pose>
+
+    <visual name="v">
+      <geometry>
+        <cylinder>
+          <radius>0.7</radius>
+          <length>0.02</length>
+        </cylinder>
+      </geometry>
+
+      <material>
+        <ambient>1.0 0.8 0.0 1</ambient>
+        <diffuse>1.0 0.8 0.0 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+
+    <!-- ── Houses ────────────────────────────────────────────────── -->
+    <!-- RED -->
     <model name="house_red"><static>true</static><pose>10 8 0 0 0 0</pose>
       <link name="walls"><pose>0 0 1.3 0 0 0</pose>
         <visual name="v"><geometry><box><size>4.5 4.5 2.6</size></box></geometry>
@@ -142,13 +261,8 @@
         <visual name="v"><geometry><box><size>0.85 0.08 0.65</size></box></geometry>
           <material><ambient>0.55 0.78 0.95 1</ambient><diffuse>0.55 0.78 0.95 1</diffuse></material></visual>
       </link>
-      <link name="num_sign"><pose>0 -2.32 2.2 0 0 0</pose>
-        <visual name="v"><geometry><box><size>0.4 0.05 0.25</size></box></geometry>
-          <material><ambient>0.9 0.9 0.1 1</ambient><diffuse>0.9 0.9 0.1 1</diffuse></material></visual>
-      </link>
     </model>
-
-    <!-- BLUE HOUSE -->
+    <!-- BLUE -->
     <model name="house_blue"><static>true</static><pose>-10 8 0 0 0 0</pose>
       <link name="walls"><pose>0 0 1.3 0 0 0</pose>
         <visual name="v"><geometry><box><size>4.5 4.5 2.6</size></box></geometry>
@@ -171,13 +285,8 @@
         <visual name="v"><geometry><box><size>0.85 0.08 0.65</size></box></geometry>
           <material><ambient>0.55 0.78 0.95 1</ambient><diffuse>0.55 0.78 0.95 1</diffuse></material></visual>
       </link>
-      <link name="num_sign"><pose>0 -2.32 2.2 0 0 0</pose>
-        <visual name="v"><geometry><box><size>0.4 0.05 0.25</size></box></geometry>
-          <material><ambient>0.9 0.9 0.1 1</ambient><diffuse>0.9 0.9 0.1 1</diffuse></material></visual>
-      </link>
     </model>
-
-    <!-- GREEN HOUSE -->
+    <!-- GREEN -->
     <model name="house_green"><static>true</static><pose>10 -8 0 0 0 0</pose>
       <link name="walls"><pose>0 0 1.3 0 0 0</pose>
         <visual name="v"><geometry><box><size>4.5 4.5 2.6</size></box></geometry>
@@ -200,13 +309,8 @@
         <visual name="v"><geometry><box><size>0.85 0.08 0.65</size></box></geometry>
           <material><ambient>0.55 0.78 0.95 1</ambient><diffuse>0.55 0.78 0.95 1</diffuse></material></visual>
       </link>
-      <link name="num_sign"><pose>0 -2.32 2.2 0 0 0</pose>
-        <visual name="v"><geometry><box><size>0.4 0.05 0.25</size></box></geometry>
-          <material><ambient>0.9 0.9 0.1 1</ambient><diffuse>0.9 0.9 0.1 1</diffuse></material></visual>
-      </link>
     </model>
-
-    <!-- YELLOW HOUSE -->
+    <!-- YELLOW -->
     <model name="house_yellow"><static>true</static><pose>-10 -8 0 0 0 0</pose>
       <link name="walls"><pose>0 0 1.3 0 0 0</pose>
         <visual name="v"><geometry><box><size>4.5 4.5 2.6</size></box></geometry>
@@ -229,89 +333,200 @@
         <visual name="v"><geometry><box><size>0.85 0.08 0.65</size></box></geometry>
           <material><ambient>0.55 0.78 0.95 1</ambient><diffuse>0.55 0.78 0.95 1</diffuse></material></visual>
       </link>
-      <link name="num_sign"><pose>0 -2.32 2.2 0 0 0</pose>
-        <visual name="v"><geometry><box><size>0.4 0.05 0.25</size></box></geometry>
-          <material><ambient>0.9 0.9 0.1 1</ambient><diffuse>0.9 0.9 0.1 1</diffuse></material></visual>
-      </link>
     </model>
 
-  </world>
-</sdf>
-
-    <!-- PARCEL PICKUP MARKER at depot -->
-    <model name="parcel_marker"><static>true</static><pose>0.5 -1.5 0 0 0 0</pose>
-      <link name="post"><pose>0 0 1.5 0 0 0</pose>
-        <visual name='v'><geometry><cylinder><radius>0.06</radius><length>3.0</length></cylinder></geometry>
-          <material><ambient>0.9 0.5 0.0 1</ambient><diffuse>0.9 0.5 0.0 1</diffuse></material></visual>
-      </link>
-      <link name="flag"><pose>0.3 0 2.8 0 0 0</pose>
-        <visual name='v'><geometry><box><size>0.6 0.05 0.4</size></box></geometry>
-          <material><ambient>0.9 0.5 0.0 1</ambient><diffuse>0.9 0.5 0.0 1</diffuse></material></visual>
-      </link>
-      <link name="parcel_box"><pose>0 0 0.2 0 0 0</pose>
-        <visual name='v'><geometry><box><size>0.4 0.4 0.4</size></box></geometry>
-          <material><ambient>0.6 0.4 0.1 1</ambient><diffuse>0.6 0.4 0.1 1</diffuse></material></visual>
-        <collision name='c'><geometry><box><size>0.4 0.4 0.4</size></box></geometry></collision>
-      </link>
-    </model>
-
-
-    <!-- PARCEL PICKUP MARKER at depot origin -->
-    <model name="parcel_marker"><static>true</static><pose>0 0 0 0 0 0</pose>
-      <link name="post"><pose>0 0 1.5 0 0 0</pose>
-        <visual name='v'><geometry><cylinder><radius>0.06</radius><length>3.0</length></cylinder></geometry>
-          <material><ambient>0.9 0.5 0.0 1</ambient><diffuse>0.9 0.5 0.0 1</diffuse></material></visual>
-      </link>
-      <link name="flag"><pose>0.3 0 2.8 0 0 0</pose>
-        <visual name='v'><geometry><box><size>0.6 0.05 0.4</size></box></geometry>
-          <material><ambient>0.9 0.5 0.0 1</ambient><diffuse>0.9 0.5 0.0 1</diffuse></material></visual>
-      </link>
-      <link name="parcel_box"><pose>0 0.8 0.2 0 0 0</pose>
-        <visual name='v'><geometry><box><size>0.4 0.4 0.4</size></box></geometry>
-          <material><ambient>0.6 0.4 0.1 1</ambient><diffuse>0.6 0.4 0.1 1</diffuse></material></visual>
-        <collision name='c'><geometry><box><size>0.4 0.4 0.4</size></box></geometry></collision>
-      </link>
-    </model>
-
-    <!-- Delivery markers above house doors - tall colored arrows -->
+    <!-- ── Delivery target markers (tall pole + ball above each house) -->
     <model name="marker_red"><static>true</static><pose>10 5.7 0 0 0 0</pose>
       <link name="pole"><pose>0 0 4.5 0 0 0</pose>
-        <visual name='v'><geometry><cylinder><radius>0.08</radius><length>3.0</length></cylinder></geometry>
+        <visual name="v"><geometry><cylinder><radius>0.08</radius><length>3.0</length></cylinder></geometry>
           <material><ambient>0.9 0.1 0.1 1</ambient><diffuse>0.9 0.1 0.1 1</diffuse></material></visual>
       </link>
-      <link name="arrow"><pose>0 0 6.1 0 0 0</pose>
-        <visual name='v'><geometry><sphere><radius>0.25</radius></sphere></geometry>
+      <link name="ball"><pose>0 0 6.1 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.25</radius></sphere></geometry>
           <material><ambient>0.9 0.1 0.1 1</ambient><diffuse>0.9 0.1 0.1 1</diffuse></material></visual>
       </link>
     </model>
     <model name="marker_blue"><static>true</static><pose>-10 5.7 0 0 0 0</pose>
       <link name="pole"><pose>0 0 4.5 0 0 0</pose>
-        <visual name='v'><geometry><cylinder><radius>0.08</radius><length>3.0</length></cylinder></geometry>
+        <visual name="v"><geometry><cylinder><radius>0.08</radius><length>3.0</length></cylinder></geometry>
           <material><ambient>0.1 0.1 0.9 1</ambient><diffuse>0.1 0.1 0.9 1</diffuse></material></visual>
       </link>
-      <link name="arrow"><pose>0 0 6.1 0 0 0</pose>
-        <visual name='v'><geometry><sphere><radius>0.25</radius></sphere></geometry>
+      <link name="ball"><pose>0 0 6.1 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.25</radius></sphere></geometry>
           <material><ambient>0.1 0.1 0.9 1</ambient><diffuse>0.1 0.1 0.9 1</diffuse></material></visual>
       </link>
     </model>
     <model name="marker_green"><static>true</static><pose>10 -5.7 0 0 0 0</pose>
       <link name="pole"><pose>0 0 4.5 0 0 0</pose>
-        <visual name='v'><geometry><cylinder><radius>0.08</radius><length>3.0</length></cylinder></geometry>
+        <visual name="v"><geometry><cylinder><radius>0.08</radius><length>3.0</length></cylinder></geometry>
           <material><ambient>0.1 0.8 0.1 1</ambient><diffuse>0.1 0.8 0.1 1</diffuse></material></visual>
       </link>
-      <link name="arrow"><pose>0 0 6.1 0 0 0</pose>
-        <visual name='v'><geometry><sphere><radius>0.25</radius></sphere></geometry>
+      <link name="ball"><pose>0 0 6.1 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.25</radius></sphere></geometry>
           <material><ambient>0.1 0.8 0.1 1</ambient><diffuse>0.1 0.8 0.1 1</diffuse></material></visual>
       </link>
     </model>
     <model name="marker_yellow"><static>true</static><pose>-10 -5.7 0 0 0 0</pose>
       <link name="pole"><pose>0 0 4.5 0 0 0</pose>
-        <visual name='v'><geometry><cylinder><radius>0.08</radius><length>3.0</length></cylinder></geometry>
+        <visual name="v"><geometry><cylinder><radius>0.08</radius><length>3.0</length></cylinder></geometry>
           <material><ambient>0.9 0.85 0.0 1</ambient><diffuse>0.9 0.85 0.0 1</diffuse></material></visual>
       </link>
-      <link name="arrow"><pose>0 0 6.1 0 0 0</pose>
-        <visual name='v'><geometry><sphere><radius>0.25</radius></sphere></geometry>
+      <link name="ball"><pose>0 0 6.1 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.25</radius></sphere></geometry>
           <material><ambient>0.9 0.85 0.0 1</ambient><diffuse>0.9 0.85 0.0 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- ── Trees (green sphere canopy + brown trunk) ─────────────── -->
+    <!-- 8 trees placed along sidewalks, away from road and houses -->
+    <model name="tree_1"><static>true</static><pose>7 5.5 0 0 0 0</pose>
+      <link name="trunk"><pose>0 0 0.6 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.35 0.22 0.08 1</ambient><diffuse>0.35 0.22 0.08 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="canopy"><pose>0 0 1.8 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.8</radius></sphere></geometry>
+          <material><ambient>0.15 0.5 0.1 1</ambient><diffuse>0.15 0.5 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_2"><static>true</static><pose>-7 5.5 0 0 0 0</pose>
+      <link name="trunk"><pose>0 0 0.6 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.35 0.22 0.08 1</ambient><diffuse>0.35 0.22 0.08 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="canopy"><pose>0 0 1.8 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.8</radius></sphere></geometry>
+          <material><ambient>0.15 0.5 0.1 1</ambient><diffuse>0.15 0.5 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_3"><static>true</static><pose>7 -5.5 0 0 0 0</pose>
+      <link name="trunk"><pose>0 0 0.6 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.35 0.22 0.08 1</ambient><diffuse>0.35 0.22 0.08 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="canopy"><pose>0 0 1.8 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.8</radius></sphere></geometry>
+          <material><ambient>0.15 0.5 0.1 1</ambient><diffuse>0.15 0.5 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_4"><static>true</static><pose>-7 -5.5 0 0 0 0</pose>
+      <link name="trunk"><pose>0 0 0.6 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.35 0.22 0.08 1</ambient><diffuse>0.35 0.22 0.08 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="canopy"><pose>0 0 1.8 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.8</radius></sphere></geometry>
+          <material><ambient>0.15 0.5 0.1 1</ambient><diffuse>0.15 0.5 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_5"><static>true</static><pose>5.5 7 0 0 0 0</pose>
+      <link name="trunk"><pose>0 0 0.6 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.35 0.22 0.08 1</ambient><diffuse>0.35 0.22 0.08 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="canopy"><pose>0 0 1.8 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.8</radius></sphere></geometry>
+          <material><ambient>0.15 0.5 0.1 1</ambient><diffuse>0.15 0.5 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_6"><static>true</static><pose>-5.5 7 0 0 0 0</pose>
+      <link name="trunk"><pose>0 0 0.6 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.35 0.22 0.08 1</ambient><diffuse>0.35 0.22 0.08 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="canopy"><pose>0 0 1.8 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.8</radius></sphere></geometry>
+          <material><ambient>0.15 0.5 0.1 1</ambient><diffuse>0.15 0.5 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_7"><static>true</static><pose>5.5 -7 0 0 0 0</pose>
+      <link name="trunk"><pose>0 0 0.6 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.35 0.22 0.08 1</ambient><diffuse>0.35 0.22 0.08 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="canopy"><pose>0 0 1.8 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.8</radius></sphere></geometry>
+          <material><ambient>0.15 0.5 0.1 1</ambient><diffuse>0.15 0.5 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_8"><static>true</static><pose>-5.5 -7 0 0 0 0</pose>
+      <link name="trunk"><pose>0 0 0.6 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.35 0.22 0.08 1</ambient><diffuse>0.35 0.22 0.08 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.12</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="canopy"><pose>0 0 1.8 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.8</radius></sphere></geometry>
+          <material><ambient>0.15 0.5 0.1 1</ambient><diffuse>0.15 0.5 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- ── Humans (capsule body + sphere head, standing on sidewalk) -->
+    <model name="human_1"><static>true</static><pose>8 4.5 0 0 0 0</pose>
+      <link name="body"><pose>0 0 0.9 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.2</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.85 0.72 0.55 1</ambient><diffuse>0.85 0.72 0.55 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.2</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="head"><pose>0 0 1.65 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material><ambient>0.85 0.72 0.55 1</ambient><diffuse>0.85 0.72 0.55 1</diffuse></material></visual>
+      </link>
+      <link name="shirt"><pose>0 0 0.9 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.21</radius><length>0.7</length></cylinder></geometry>
+          <material><ambient>0.2 0.4 0.8 1</ambient><diffuse>0.2 0.4 0.8 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="human_2"><static>true</static><pose>-8 4.5 0 0 0 0</pose>
+      <link name="body"><pose>0 0 0.9 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.2</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.85 0.72 0.55 1</ambient><diffuse>0.85 0.72 0.55 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.2</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="head"><pose>0 0 1.65 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material><ambient>0.85 0.72 0.55 1</ambient><diffuse>0.85 0.72 0.55 1</diffuse></material></visual>
+      </link>
+      <link name="shirt"><pose>0 0 0.9 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.21</radius><length>0.7</length></cylinder></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient><diffuse>0.8 0.2 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="human_3"><static>true</static><pose>8 -4.5 0 0 0 0</pose>
+      <link name="body"><pose>0 0 0.9 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.2</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.85 0.72 0.55 1</ambient><diffuse>0.85 0.72 0.55 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.2</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="head"><pose>0 0 1.65 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material><ambient>0.85 0.72 0.55 1</ambient><diffuse>0.85 0.72 0.55 1</diffuse></material></visual>
+      </link>
+      <link name="shirt"><pose>0 0 0.9 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.21</radius><length>0.7</length></cylinder></geometry>
+          <material><ambient>0.2 0.7 0.3 1</ambient><diffuse>0.2 0.7 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="human_4"><static>true</static><pose>-8 -4.5 0 0 0 0</pose>
+      <link name="body"><pose>0 0 0.9 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.2</radius><length>1.2</length></cylinder></geometry>
+          <material><ambient>0.85 0.72 0.55 1</ambient><diffuse>0.85 0.72 0.55 1</diffuse></material></visual>
+        <collision name="c"><geometry><cylinder><radius>0.2</radius><length>1.2</length></cylinder></geometry></collision>
+      </link>
+      <link name="head"><pose>0 0 1.65 0 0 0</pose>
+        <visual name="v"><geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material><ambient>0.85 0.72 0.55 1</ambient><diffuse>0.85 0.72 0.55 1</diffuse></material></visual>
+      </link>
+      <link name="shirt"><pose>0 0 0.9 0 0 0</pose>
+        <visual name="v"><geometry><cylinder><radius>0.21</radius><length>0.7</length></cylinder></geometry>
+          <material><ambient>0.6 0.3 0.7 1</ambient><diffuse>0.6 0.3 0.7 1</diffuse></material></visual>
       </link>
     </model>
 
