@@ -1,21 +1,21 @@
 waypoints:
   - name: red_house
     x: 10.0
-    y: 5.5
+    y: 5.72
     z: 0.0
     color: red
   - name: blue_house
     x: -10.0
-    y: 5.5
+    y: 5.72
     z: 0.0
     color: blue
   - name: green_house
     x: 10.0
-    y: -5.5
+    y: -5.72
     z: 0.0
     color: green
   - name: yellow_house
     x: -10.0
-    y: -5.5
+    y: -5.72
     z: 0.0
     color: yellow
